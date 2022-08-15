@@ -57,6 +57,7 @@ class ROS2SubscriberModule(Node, AbstractProducingModule):
             self.get_logger().info(f"received {msg}!") 
         
         self._ros_msg = msg
+        self.process_update(None)
 
     def setup(self):
         pass
