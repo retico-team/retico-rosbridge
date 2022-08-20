@@ -1,4 +1,5 @@
 import os
+import numpy as np
 from retico_core import *
 
 
@@ -35,18 +36,19 @@ class JointAnglesToTextModule(AbstractModule):
         for iu, ut in update_message:
             joint_state = iu.payload # list of floats
             output_iu = self.create_iu()
+            print(joint_state)
             
-            if joint_state == [1.57, -1.57, 0.0, -1.57, 0.0 ,0.0]:
+            if (joint_state == np.array([1.57, -1.57, 0.0, -1.57, 0.0 ,0.0])).all():
                 output_iu.payload = "Yayy, I am moving forward!"
-            elif joint_state == [-1.57, -1.57, 0.0, -1.57, 0.0 ,0.0]:
+            elif (joint_state == np.array([-1.57, -1.57, 0.0, -1.57, 0.0 ,0.0])).all():
                 output_iu.payload = "Watch out, I am moving backward!"
-            elif joint_state == [0.0, -1.57, -0.785, -1.57, 0.0 ,0.0]:
+            elif (joint_state == np.array([0.0, -1.57, -0.785, -1.57, 0.0 ,0.0])).all():
                 output_iu.payload = "Yes! Moving to the left!"
-            elif joint_state == [0.0, -1.57, 0.785, -1.57, 0.0 ,0.0]:
+            elif (joint_state == np.array([0.0, -1.57, 0.785, -1.57, 0.0 ,0.0])).all():
                 output_iu.payload = "I am always right! B-)"
-            elif joint_state == [0.0, -1.57, 0.0, -1.57, 0.0 ,0.0]:
+            elif (joint_state == np.array([0.0, -1.57, 0.0, -1.57, 0.0 ,0.0])).all():
                 output_iu.payload = "Ok, I will raise my head!"
-            elif joint_state == [1.57, -1.57, 2.355, -1.57, 0.0 ,0.0]:
+            elif (joint_state == np.array([1.57, -1.57, 2.355, -1.57, 0.0 ,0.0])).all():
                 output_iu.payload = "You can't see me anymore, cause I am moving down!"
             else:
                 output_iu.payload = "I don't understand what you mean!"

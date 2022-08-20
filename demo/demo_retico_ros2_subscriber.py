@@ -41,4 +41,4 @@ print("Running the Modules...")
 m1.run()
 m2.run()
 m3.run()
-rclpy.spin(m1) # blocks the communication with other retico modules :/
+rclpy.spin(m1)
