@@ -24,7 +24,7 @@ In a nutshell, this demo program first gets the command (e.g. "move to the left"
 
 - `TextInputModule` is responsible for getting command from command line.
 - `TextToJointAnglesModule` converts the text command to a list of joint (floats) values and pack them into an IncrementalUnit, based on the dictionary in `retico_ros2/config/joint_values.json`.
-- `ROS2PublisherModule` is a **general** ReTiCo Module as well as a ROS publisher node which translates an ReTiCo IncrementalUnit to a ROS Message. In this example:
+- `ROS2PublisherModule` is a **general** ReTiCo Module as well as a ROS publisher node which translates an ReTiCo IncrementalUnit (IU) to a ROS Message. In this example:
     1. its name, as a ROS publisher node, is `publisher_joint_trajectory_controller`.
     2. it takes the function `to_ur3e_joint_angles()` which converts an IncrementalUnit containing list of joint values to the ROS message of `JointTrajectory` type.
     3. it publishes the `JointTrajectory` message to the ROS topic `/joint_trajectory_controller/joint_trajectory`.
@@ -33,7 +33,7 @@ In a nutshell, this demo program first gets the command (e.g. "move to the left"
 The following extract from the rqt graph visualizes how `ROS2PublisherModule` communicates with ROS:
 ![image](./images/publisher_rqt.png)
 
-## `demo_retico_ros2_subscriber.py`
-
+## `demo_retico_ros2_subscriber.py` 
+This is just analogue to `demo_retico_ros2_publisher.py`. Once the `ROS2PublisherModule` receives a ROS message (in the demo: of `JointTrajectory` type), it will convert that into an IU and forward it to `JointAnglesToTextModule`, and the corresponding text is then printed on the console by the `TextOutputModule`.
 
 
