@@ -15,8 +15,15 @@ ros2 launch ur_bringup ur_control.launch.py ur_type:=ur3e robot_ip:=yyy.yyy.yyy.
 ```bash
 python demo_retico_ros2_publisher.py
 ```
-- In the terminal where you have run the script, type any command to let the robot move, e.g.: "move to the left", "go up!" etc.
-- You should then see the robot moving (in Rviz and/or in the reality).
+- In the terminal where you have run the script, type a command containing one of the following words at one time:
+    - forward (e.g. look forward!)
+    - backward
+    - left (e.g. move to the left!)
+    - right
+    - up
+    - down
+
+- You should then see the robot moving correspondingly(in Rviz and/or in the reality).
 
 ### Description
 In a nutshell, this demo program first gets the command (e.g. "move to the left") from command line, converts it into joint values that will be passed to ROS. The robot arm will then move according to those joint values. This is how the pipeline looks like:
