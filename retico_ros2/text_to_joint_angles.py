@@ -52,8 +52,8 @@ class TextToJointAnglesModule(AbstractModule):
                     output_iu.payload = self.joint_angles['down']
                 elif 'forward' in iu_text:
                     output_iu.payload = self.joint_angles['forward']
-                elif 'back' in iu_text:
-                    output_iu.payload = self.joint_angles['backward']
+                elif 'around' in iu_text:
+                    output_iu.payload = self.joint_angles['around']
                 elif 'stop' in iu_text:
                     self.callback('TextToJointAnglesModule', 'exit')
                 else: 
